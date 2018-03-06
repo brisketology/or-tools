@@ -1,6 +1,10 @@
 REM /!\ THIS SCRIPT SUPPOSE A FIXED PATH FOR PYTHON /!\
 REM Each blocks could be triggered independently (i.e. commenting others)
 REM run it as: cmd /c tools\build_delivery_win.cmd
+
+REM Check all prerequisite
+
+
 echo Rebuilding third party...
 tools\make clean_third_party || exit 1
 tools\make third_party WINDOWS_PATH_TO_PYTHON=c:\python27-64 || exit 1
@@ -39,6 +43,5 @@ tools\make pypi_archive WINDOWS_PATH_TO_PYTHON=c:\python36-64 || exit 1
 echo Rebuilding for Python 3.6...DONE
 
 echo Creating .NET artifacts...
-set VS90COMNTOOLS=C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\Tools || exit 1
 tools\make nuget_archive WINDOWS_PATH_TO_PYTHON=c:\python27-64 || exit 1
 echo Creating .NET artifacts...DONE
